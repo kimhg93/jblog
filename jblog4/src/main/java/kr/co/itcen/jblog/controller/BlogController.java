@@ -81,6 +81,7 @@ public class BlogController {
 	public BlogVo basic(@PathVariable String id, BlogVo vo, 
 							 @RequestParam(value="logo")String beforeLogo,
 							 @RequestParam(value="newlogo", required=false)MultipartFile multipartFile) {
+		System.out.println("test???");
 		String logo = blogService.restore(multipartFile);	
 		System.out.println("logotest>>"+beforeLogo);
 		

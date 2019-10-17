@@ -80,6 +80,7 @@ function updateBlog() {
     var form = $('#update_form')[0];
     var data = new FormData(form);
     var updatePath = $("#update_path").val();
+    alert(updatePath);
     var path = $("#path").val();
     $.ajax({
         type: "POST",
@@ -93,7 +94,7 @@ function updateBlog() {
         	$("#title").val(response.title);
         },
         error: function(request,status,error) {	
-        	alert("message=" + request.responseText);
+        	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
             location.reload();
         }        
     });    

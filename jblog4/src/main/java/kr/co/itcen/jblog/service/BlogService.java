@@ -38,6 +38,7 @@ public class BlogService {
 		return blogDao.getList();
 	}
 	public String restore(MultipartFile multipartFile) {
+		System.out.println("testtesttest");
 		String url = "";
 		try {				
 			if(multipartFile==null) {
