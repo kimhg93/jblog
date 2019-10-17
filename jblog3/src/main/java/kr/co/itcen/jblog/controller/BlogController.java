@@ -28,7 +28,7 @@ public class BlogController {
 	private CategoryService categoryService;
 	@Autowired
 	private PostService postService;  
-	
+
 	
 	@RequestMapping(value= {"","/{path}","/{category}/{path}"}, method=RequestMethod.GET)
 	public String index(@PathVariable String id, 
