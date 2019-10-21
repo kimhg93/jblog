@@ -42,6 +42,10 @@ public class UserController {
 	public void logout() {
 		System.out.println("로그아웃 됨");
 	}
+	@RequestMapping(value="/admin", method=RequestMethod.GET)
+	public void admin() {
+		System.out.println("로그아웃 됨");
+	}
 	
 	@ResponseBody
 	@RequestMapping(value="/checkid", method=RequestMethod.GET)
