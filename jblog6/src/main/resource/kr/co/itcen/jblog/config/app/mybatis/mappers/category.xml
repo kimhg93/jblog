@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="category">
+	<insert id="insert" parameterType="String">
+		<![CDATA[
+			insert into category 
+			values(null, '미분류', '미분류', now(), #{id})
+		]]>
+	</insert>
+	
+	<insert id="add" parameterType="categoryvo">
+		<![CDATA[
+			insert into category 
+			values(null, #{name }, #{comment }, now(), #{userId})
+		]]>
+		<selectKey keyProperty="no" resultType="Long">
+			<![CDATA[
+				select last_insert_id()
+			]]>	
+		</selectKey>
+	</insert>
+	
+	<select id="getList" parameterType="String" resultType="categoryvo">
+		<![CDATA[
+			select a.no, a.name, a.comment, date_format(a.reg_date, '%Y-%m-%d') as regDate, count(b.no) as postCount
+			from category a left outer join post b on a.no = b.category_no
+			where a.user_id = #{id}
+			group by a.no;
+		]]>
+	</select>
+	<delete id="delete" parameterType="Long">
+		<![CDATA[
+			delete from category where no = #{no }
+		]]>
+	</delete>
+</mapper>
